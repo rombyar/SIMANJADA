@@ -1,0 +1,44 @@
+Pada website ini menggunakan email sebagai pengganti username.
+
+=== Admin ===
+Login untuk Admin
+email: super@masjid.com
+password: 12345
+
+
+=== DKM ===
+Login untuk DKM
+email: dkm1@masjid.com
+password: 12345
+
+Login DKM yang diBanned
+email: dkm2@masjid.com
+password: 12345
+
+Login DKM yang data masjid masih kosong
+email: dkm3@masjid.com
+password: 12345
+
+
+=== Cara Login ===
+Untuk melakukan login ke website:
+1. Silahkan menuju halaman login: http://localhost/masjid/user/login  (sesuaikan dengan alamat localhost).
+2. Silahkan masukkan alamat email pengguna.
+3. Silahkan masukkan password pengguna.
+4. Setelah login sukses pengguna website akan diarahkan ke halaman dashboard sesuai hak akses masing - masing.
+5. Jika login gagal maka akan diarahkan ke halaman login lagi dengan memberikan info gagal login.
+
+=== Hak Akses Halaman ===
+Jika Admin atau DKM sukses login, Admin atau DKM dapat mengakses halaman:
+1. Halaman Dashboard untuk Admin atau DKM (http://localhost/masjid/su/dashboard)
+2. Halaman ganti password untuk Admin atau DKM (http://localhost/masjid/user/settings)
+3. Halaman DKM untuk Admin (http://localhost/masjid/su/dkm)
+4. Halaman Masjid untuk Admin atau DKM (http://localhost/masjid/su/masjid)
+5. Halaman Jadwal untuk Admin atau DKM (http://localhost/masjid/su/jadwal)
+
+
+Untuk masyarakat hanya dapat mengakses halaman daftar dan jadwal masjid:
+1. Halaman daftar masjid: http://localhost/masjid/pu/masjid. 
+   Untuk melihat detail masjid tinggal mengeklik nama masjid yang nantinya akan diarahkan ke halaman detail masjid sesuai #ID.
+2. Halaman daftar jadwal: http://localhost/masjid/pu/jadwal. 
+   Untuk melihat detail jadwal tinggal mengeklik nama jadwal yang nantinya akan diarahkan ke halaman detail jadwal sesuai #ID.
