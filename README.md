@@ -6,4 +6,4 @@ Sistem Informasi Daftar dan Jadwal Masjid
 2. Tank_Auth
 
 # Penggunaan
-Silahkan baca petunjuk penggunaan
+Silahkan baca file Catatan_akses_website_masjid.txt
