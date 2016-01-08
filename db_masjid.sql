@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: 127.0.0.1
--- Waktu pembuatan: 30 Des 2015 pada 05.13
+-- Waktu pembuatan: 09 Jan 2016 pada 00.41
 -- Versi Server: 5.5.32
 -- Versi PHP: 5.4.19
 
@@ -138,10 +138,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id_users`, `level`, `username`, `password`, `email`, `activated`, `banned`, `ban_reason`, `new_password_key`, `new_password_requested`, `new_email`, `new_email_key`, `last_ip`, `last_login`, `created`, `modified`) VALUES
-(1, '1', 'super', '$2a$08$0HpYWeibq/WOD0dZ27RuH.9PiYtdvuVppDebnQzs7xILfzjWYXLYq', 'super@masjid.com', 1, 0, NULL, NULL, NULL, NULL, '5972350e97d85e9a3b8ec52bbea3aacc', '::1', '2015-12-30 05:00:49', '2015-12-19 05:09:41', '2015-12-30 04:00:49'),
-(2, '2', 'dkm1', '$2a$08$MIjNJhJed4ojYZ/J1IpfPedl6qPQmNBwntcslRBROmcPh3U04aRyy', 'dkm1@masjid.com', 1, 0, NULL, NULL, NULL, NULL, 'ef3640b378bc7b8dea1e71719db89375', '::1', '2015-12-29 19:00:05', '2015-12-19 05:53:12', '2015-12-29 18:00:05'),
+(1, '1', 'super', '$2a$08$0HpYWeibq/WOD0dZ27RuH.9PiYtdvuVppDebnQzs7xILfzjWYXLYq', 'super@masjid.com', 1, 0, NULL, NULL, NULL, NULL, '5972350e97d85e9a3b8ec52bbea3aacc', '::1', '2015-12-30 05:33:20', '2015-12-19 05:09:41', '2015-12-30 04:33:20'),
+(2, '2', 'dkm1', '$2a$08$MIjNJhJed4ojYZ/J1IpfPedl6qPQmNBwntcslRBROmcPh3U04aRyy', 'dkm1@masjid.com', 1, 0, NULL, NULL, NULL, NULL, 'ef3640b378bc7b8dea1e71719db89375', '::1', '2015-12-31 03:21:45', '2015-12-19 05:53:12', '2015-12-31 02:21:45'),
 (3, '2', 'dkm2', '$2a$08$DcHOIBJkyUgj6lVJF6GeD.PC6FWng5KOlCJLsZp.7S5EoierkPoti', 'dkm2@masjid.com', 0, 0, NULL, NULL, NULL, NULL, '7e1ea5b63b5521ff72355e66454414e2', '::1', '2015-12-29 14:12:44', '2015-12-20 13:09:40', '2015-12-29 17:59:04'),
-(4, '2', 'dkm3', '$2a$08$shF/RIYYWLkhLOJ.Fhao/u1e5MJnk0wZeXqCI8VIUOyWtzYPHhpg2', 'dkm3@masjid.com', 1, 0, NULL, NULL, NULL, NULL, '4e01859eba15b4c49c89243584a9ddd9', '::1', '2015-12-29 18:59:40', '2015-12-29 18:58:47', '2015-12-29 17:59:40');
+(4, '2', 'dkm3', '$2a$08$shF/RIYYWLkhLOJ.Fhao/u1e5MJnk0wZeXqCI8VIUOyWtzYPHhpg2', 'dkm3@masjid.com', 1, 0, NULL, NULL, NULL, NULL, '4e01859eba15b4c49c89243584a9ddd9', '::1', '2015-12-30 05:38:40', '2015-12-29 18:58:47', '2015-12-30 04:38:40');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
