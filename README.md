@@ -28,20 +28,3 @@ Sistem Informasi Daftar dan Jadwal Masjid
 Silahkan baca file Catatan_akses_website_masjid.txt
 
 # Donasi
-<script src="http://coinwidget.com/widget/coin.js"></script>
-	<script>
-	CoinWidgetCom.go({
-		/* make sure you update the wallet_address or you will not get your donations */
-		wallet_address: "1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv"
-		, currency: "bitcoin"
-		, counter: "count"
-		, alignment: "bl"
-		, qrcode: true
-		, auto_show: false
-		, lbl_button: "Donate"
-		, lbl_address: "Donate Bitcoin to this Address:"
-		, lbl_count: "donations"
-		, lbl_amount: "BTC"
-	});
-	</script>
-
