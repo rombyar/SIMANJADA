@@ -28,6 +28,4 @@ Sistem Informasi Daftar dan Jadwal Masjid
 Silahkan baca file Catatan_akses_website_masjid.txt
 
 # Donasi
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://gitcdn.org/libs/bitcoinate/0.2.1/index.min.js"></script>
-<button class="bitcoinate" data-size="30" data-address="1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv" data-type="URI" data-amount="0.05" data-label="Donasi">bitcoinate</button>
+Bitcoin: 1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv
