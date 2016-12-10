@@ -21,7 +21,7 @@ Sistem Informasi Jadwal dan Daftar Masjid
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/2016-01-09_073624_zpstsex4ja2.png" >
 
 # Sistem
-1. Codeigniter 2.2.6
+1. Codeigniter v2.2.6
 2. Tank_Auth
 3. Bluebox Free Bootstrap Admin Template
 
