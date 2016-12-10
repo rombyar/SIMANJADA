@@ -23,6 +23,7 @@ Sistem Informasi Jadwal dan Daftar Masjid
 # Sistem
 1. Codeigniter 2.2.6
 2. Tank_Auth
+3. Bluebox Free Bootstrap Admin Template
 
 # Penggunaan
 Silahkan baca file Catatan_akses_website_masjid.txt
