@@ -1,5 +1,5 @@
 # SIMANJADA
-Sistem Informasi Daftar dan Jadwal Masjid
+Sistem Informasi Jadwal dan Daftar Masjid
 
 <image width="50%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/2016-01-09_064642_zpswejlaeoq.png" >
 
