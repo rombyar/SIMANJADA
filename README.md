@@ -28,3 +28,5 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 
 # Donasi
 Bitcoin: 1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv
+
+Blog: <a href="http://www.romadhon-byar.com/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
