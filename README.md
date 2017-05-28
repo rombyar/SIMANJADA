@@ -2,7 +2,7 @@
 Sistem Informasi Jadwal dan Daftar Masjid</br>
 <image width="50%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_064642_zpswejlaeoq.png"/>
 
-# Tampilan 
+# Display 
 <p>Super Admin</p>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072716_zpsg6tr1h7r.png"/>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072323_zpsprdftwvl.png"/>
@@ -18,17 +18,16 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_073618_zpskbyvrqz9.png"/>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_073624_zpstsex4ja2.png"/>
 
-# Sistem
+# System
 1. Codeigniter v2.2.6
 2. Tank_Auth
 3. Bluebox Free Bootstrap Admin Template
 
-# Penggunaan
+# How to use
 <a href="https://github.com/romadhonbyar/SIMANJADA/blob/master/How%20to%20use.txt">How to use.txt</a>
-1. Silahkan baca file Catatan_akses_website_masjid.txt
 
-# Donasi
-Bitcoin: 1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv
+# Donation
+Bitcoin: <b><i>1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv</i></b>
 
 # Blog Post
 <a href="https://romadhon-byar.blogspot.co.id/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
