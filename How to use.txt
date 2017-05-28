@@ -3,7 +3,7 @@ Pada website ini menggunakan email sebagai pengganti username.
 === Admin ===
 Login untuk Admin
 email: super@masjid.com
-password: 12345
+password: 12345 
 
 
 === DKM ===
