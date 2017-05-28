@@ -24,10 +24,11 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 3. Bluebox Free Bootstrap Admin Template
 
 # Penggunaan
+<a href="https://github.com/romadhonbyar/SIMANJADA/blob/master/How%20to%20use.txt">How to use.txt</a>
 1. Silahkan baca file Catatan_akses_website_masjid.txt
 
 # Donasi
 Bitcoin: 1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv
 
 # Blog Post
-<a href="http://www.romadhon-byar.com/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
+<a href="https://romadhon-byar.blogspot.co.id/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
