@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `data_dkm` (
 --
 
 INSERT INTO `data_dkm` (`id_dkm`, `id_users`, `nama_dkm`, `nomor_telepon_dkm`, `alamat_dkm`) VALUES
-(1, 1, 'Super DKM', '08978596665', 'Jl.Raya pasar kecapi'),
+(1, 1, 'Super DKM', '08978696666', 'Jl.Raya pasar kecapi'),
 (2, 2, 'DKM', '08971755560', 'Jl.Raya Kendiri III'),
 (3, 3, 'DKM 02', '08977564466', 'Jl.Rawa Pedes'),
 (4, 4, 'Andi', '08978665544', 'Jl.Raya Ranggi I');
