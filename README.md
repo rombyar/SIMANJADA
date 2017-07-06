@@ -4,7 +4,7 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 
 # Display 
 <p>Super Admin</p>
-<image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072716_zpsg6tr1h7r.png"/>
+<image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072716_zpsg6tr1h7r.png"/> 
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072323_zpsprdftwvl.png"/>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072354_zpsck2mn99q.png"/>
 <image width="20%" src="http://i1382.photobucket.com/albums/ah258/romadhonbyar/Github/SIMANJADA/2016-01-09_072358_zpspawq8xvb.png"/>
@@ -27,7 +27,7 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 <a href="https://github.com/romadhonbyar/SIMANJADA/blob/master/How%20to%20use.txt">How to use.txt</a>
 
 # Donation
-Bitcoin: <b><i>1L6T4vjAN77mwtsPjPcQ2AYMTqEUZMtZuv</i></b>
+Bitcoin: <b><i>16otLfcbjbV6n9o4poJ84uURkxP5xyqW5j</i></b>
 
 # Blog Post
 <a href="https://romadhon-byar.blogspot.co.id/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
