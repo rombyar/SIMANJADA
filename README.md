@@ -24,10 +24,10 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 3. Bluebox Free Bootstrap Admin Template
 
 # How to use
-<a href="https://cnhv.co/wa25">How to use.txt</a>
+<a href="https://semawur.com/gKrYFBE">How to use.txt</a>
 
 # Donation
-Bitcoin: <b><i>16otLfcbjbV6n9o4poJ84uURkxP5xyqW5j</i></b>
+<a href="https://semawur.com/baOBHdypp">Donate here</a>
 
 # Blog Post
 <a href="https://romadhon-byar.blogspot.com/2016/12/sistem-informasi-jadwal-dan-daftar-masjid-simanjada.html">Sistem informasi jadwal dan daftar Masjid</a>
