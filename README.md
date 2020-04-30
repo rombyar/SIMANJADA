@@ -24,7 +24,7 @@ Sistem Informasi Jadwal dan Daftar Masjid</br>
 3. Bluebox Free Bootstrap Admin Template
 
 # How to use
-<a href="https://semawur.com/gKrYFBE">How to use.txt</a>
+<a href="https://semawur.com/Ersx">How to use.txt</a>
 
 # Donation
 <a href="https://semawur.com/baOBHdypp">Donate here</a>
