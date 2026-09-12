@@ -3,38 +3,38 @@
 [![PHP](https://img.shields.io/badge/PHP-8.3%2B-777BB4?logo=php&logoColor=white)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)](https://laravel.com)
 [![Filament](https://img.shields.io/badge/Filament-3.x-FDAE4B)](https://filamentphp.com)
-[![License](https://img.shields.io/badge/license-custom-blue)](#hak-cipta-dan-lisensi)
+[![License](https://img.shields.io/badge/license-custom-blue)](#license)
 
 **Sistem Informasi Jadwal dan Daftar Masjid (SIMANJADA)**
 
-Majada adalah nama produk untuk generasi kedua aplikasi ini, dibangun ulang
-di atas Laravel 12 setelah sebelumnya berbasis CodeIgniter 2.2.6. Saat ini
-Majada berfokus pada profil, jadwal, dan kegiatan satu masjid.
+Majada is the second generation of this application, rebuilt on Laravel 12
+after starting out on CodeIgniter 2.2.6. The current scope covers a single
+mosque's profile, prayer schedule, and activities.
 
-## Daftar Isi
+## Contents
 
-- [Tentang](#tentang)
-- [Requirement](#requirement)
-- [Instalasi](#instalasi)
-- [Cara Penggunaan](#cara-penggunaan)
-- [Teknologi](#teknologi)
-- [Donasi](#donasi)
-- [Hak Cipta dan Lisensi](#hak-cipta-dan-lisensi)
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Tech stack](#tech-stack)
+- [Support](#support)
+- [License](#license)
 
-## Tentang
+## Overview
 
-Majada adalah sistem manajemen profil, jadwal, dan kegiatan masjid dengan
-tiga peran pengguna:
+Majada manages a mosque's profile, schedule, and activities across three
+user roles:
 
-| Peran | Akses |
+| Role | Access |
 |---|---|
-| **Super Admin** | Mengelola profil masjid (nama, alamat, tahun berdiri, dll.) dan mengelola artikel/blog. |
-| **DKM** | Pengurus masjid, mengelola profil masjidnya, jadwal salat, kegiatan, keuangan, dan pengumuman. |
-| **Publik** | Melihat profil masjid, jadwal salat, kegiatan, pengumuman, ringkasan keuangan, dan artikel secara terbuka (read-only), tanpa perlu login. |
+| **Super Admin** | Manages the mosque profile (name, address, founding year, etc.) and the article/blog content. |
+| **DKM** | The mosque committee. Manages its own profile, prayer schedule, activities, finances, and announcements. |
+| **Public** | Read-only access to the mosque profile, prayer schedule, activities, announcements, a financial summary, and articles. No login required. |
 
-## Requirement
+## Requirements
 
-| Kebutuhan | Versi saat dibuat | Minimum |
+| Requirement | Used during development | Minimum |
 |---|---|---|
 | PHP | 8.3.29 | ^8.3 |
 | Composer | 2.9.3 | ^2.x |
@@ -42,101 +42,101 @@ tiga peran pengguna:
 | npm | 11.6.2 | ^10.x |
 | MySQL | 8.0.30 | 5.7+ / 8.0+ |
 
-## Instalasi
+## Installation
 
-1. Clone repo ini, lalu install dependency:
+1. Clone the repository and install dependencies:
 
    ```bash
    composer install
    npm install
    ```
 
-2. Salin `.env.example` menjadi `.env`, lalu atur variabel `DB_*` mengarah ke
-   database MySQL yang sudah dibuat.
+2. Copy `.env.example` to `.env` and point the `DB_*` variables at a MySQL
+   database you've created.
 
-3. Migrasikan dan seed database:
+3. Run migrations and seed the database:
 
    ```bash
    php artisan migrate:fresh --seed
    ```
 
-4. Jalankan aplikasi:
+4. Start the app:
 
    ```bash
    php artisan serve
    ```
 
-5. Aplikasi siap diakses. Lihat [Cara Penggunaan](#cara-penggunaan) untuk
-   URL login dan fitur tiap panel.
+5. See [Usage](#usage) below for login URLs and what each panel offers.
 
-## Cara Penggunaan
+## Usage
 
-![Beranda publik Majada](docs/screenshots/public-homepage.png)
+![Majada public homepage](docs/screenshots/public-homepage.png)
 
-### Halaman publik (tanpa login)
+### Public pages (no login)
 
-Buka `/` untuk beranda, yang menampilkan ringkasan profil masjid, jadwal
-salat, kegiatan, pengumuman, keuangan, dan artikel terbaru. Setiap bagian
-punya halaman daftar lengkapnya sendiri:
+`/` is the homepage, showing a summary of the mosque profile, prayer
+schedule, activities, announcements, finances, and recent articles. Each
+section also has its own full listing page:
 
-| Halaman | URL |
+| Page | URL |
 |---|---|
-| Jadwal salat | `/schedules` |
-| Kegiatan | `/activities` |
-| Pengumuman | `/announcements` |
-| Ringkasan keuangan | `/finances` |
-| Blog/artikel | `/blog` |
+| Prayer schedule | `/schedules` |
+| Activities | `/activities` |
+| Announcements | `/announcements` |
+| Financial summary | `/finances` |
+| Blog | `/blog` |
 
 ### Login
 
-Panel DKM dan Super Admin masing-masing punya halaman login sendiri:
+DKM and Super Admin each have their own login page:
 
-| Panel | URL Login |
+| Panel | Login URL |
 |---|---|
 | DKM | `/dkm/login` |
 | Super Admin | `/admin/login` |
 
-Akun dibuat lewat seeder (`php artisan migrate:fresh --seed`) atau lewat
-menu manajemen pengguna di panel Super Admin.
+Accounts are created via the seeder (`php artisan migrate:fresh --seed`) or
+from the user management screen in the Super Admin panel.
 
-### Panel DKM (`/dkm`)
+### DKM panel (`/dkm`)
 
-![Dashboard panel DKM](docs/screenshots/dkm-dashboard.png)
+![DKM panel dashboard](docs/screenshots/dkm-dashboard.png)
 
-Login sebagai pengurus masjid (role `dkm`) untuk mengelola:
+Log in with the `dkm` role to manage:
 
-- Profil masjid (nama, alamat, tahun berdiri, deskripsi, lokasi peta).
-- Jadwal salat.
-- Kegiatan masjid.
-- Pengumuman.
-- Data keuangan (pemasukan/pengeluaran).
+- Mosque profile (name, address, founding year, description, map location).
+- Prayer schedule.
+- Activities.
+- Announcements.
+- Finances (income/expenses).
 
-Perubahan yang disimpan di panel ini langsung tampil di halaman publik.
+Changes made here appear on the public pages immediately.
 
-### Panel Super Admin (`/admin`)
+### Super Admin panel (`/admin`)
 
-Login sebagai admin pusat (role `super_admin`) untuk mengelola artikel/blog
-dan manajemen pengguna.
+Log in with the `super_admin` role to manage articles/blog content and user
+accounts.
 
-## Teknologi
+## Tech stack
 
 - Laravel 12
-- Blade untuk halaman publik
-- Filament untuk panel Super Admin dan DKM
-- Laravel Breeze untuk autentikasi
-- Alpine.js di luar Filament (Filament sudah membawa Alpine.js sendiri)
-- Lucide Icons untuk ikon halaman publik
+- Blade for public pages
+- Filament for the Super Admin and DKM panels
+- Laravel Breeze for authentication
+- Alpine.js outside Filament (Filament bundles its own)
+- Lucide Icons on public pages
 
-## Donasi
+## Support
 
-Dukung pengembangan Majada melalui [Trakteer](https://trakteer.id/rombyar/tip).
+If Majada is useful to you, consider supporting development via
+[Trakteer](https://trakteer.id/rombyar/tip).
 
-## Hak Cipta dan Lisensi
+## License
 
-Majada bebas digunakan dan di-hosting sendiri (self-host), termasuk untuk
-keperluan komersial pihak sendiri. Namun, menjual ulang kode dari repo ini
-secara mentah tanpa perubahan tidak diperbolehkan.
+Majada is free to use and self-host, including for your own commercial
+purposes. Reselling the code from this repository unmodified is not
+permitted.
 
-Jika ingin dijual ulang, harus ada nilai tambah yang nyata di atas aplikasi
-dasar ini, misalnya fitur baru, kustomisasi, integrasi, atau layanan
-dukungan, bukan sekadar mengganti nama dan branding.
+Reselling is allowed only if you add real value on top of the base
+application, such as new features, customization, integrations, or support
+services, not just a rebrand.
