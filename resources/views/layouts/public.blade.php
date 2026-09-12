@@ -3,19 +3,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'SIMANJADA')</title>
+    <title>@yield('title', 'Majada')</title>
+    <meta name="description" content="@yield('description', 'Jadwal sholat, kegiatan, pengumuman, dan laporan keuangan masjid secara terbuka untuk warga.')">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-50 text-gray-900">
     <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="{{ route('home') }}" class="flex items-center gap-2 font-extrabold text-lg tracking-tight text-gray-900">
+        <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+            <a href="{{ route('home') }}" class="flex items-center gap-2 font-extrabold text-lg tracking-tight text-gray-900 flex-none">
                 <x-lucide-building-2 class="w-6 h-6 text-emerald-700" />
-                SIMANJADA
+                Majada
             </a>
-            <div class="flex gap-6 text-sm font-semibold text-gray-600">
-                <a href="{{ route('home') }}" class="hover:text-emerald-700 {{ request()->routeIs('home') ? 'text-emerald-700' : '' }}">Beranda</a>
-                <a href="{{ route('blog.index') }}" class="hover:text-emerald-700 {{ request()->routeIs('blog.*') ? 'text-emerald-700' : '' }}">Blog</a>
+            <div class="flex gap-4 sm:gap-6 text-sm font-semibold text-gray-600 overflow-x-auto">
+                <a href="{{ route('home') }}" class="hover:text-emerald-700 whitespace-nowrap {{ request()->routeIs('home') ? 'text-emerald-700' : '' }}">Beranda</a>
+                @if (request()->routeIs('home'))
+                    <a href="#jadwal" class="hover:text-emerald-700 whitespace-nowrap">Jadwal</a>
+                    <a href="#pengumuman" class="hover:text-emerald-700 whitespace-nowrap">Pengumuman</a>
+                    <a href="#keuangan" class="hover:text-emerald-700 whitespace-nowrap">Keuangan</a>
+                @endif
+                <a href="{{ route('blog.index') }}" class="hover:text-emerald-700 whitespace-nowrap {{ request()->routeIs('blog.*') ? 'text-emerald-700' : '' }}">Blog</a>
             </div>
         </nav>
     </header>
@@ -25,9 +31,10 @@
     </main>
 
     <footer class="bg-gray-900 mt-12">
-        <div class="max-w-4xl mx-auto px-4 py-8 flex items-center justify-between flex-wrap gap-3">
-            <span class="font-extrabold text-white">SIMANJADA</span>
-            <span class="text-sm text-gray-400">&copy; {{ date('Y') }} Sistem Informasi Jadwal dan Daftar Masjid.</span>
+        <div class="max-w-4xl mx-auto px-4 py-8 flex flex-col gap-1">
+            <span class="font-extrabold text-white">Majada</span>
+            <span class="text-sm text-gray-400">Sistem Informasi Jadwal dan Daftar Masjid (SIMANJADA), transparan untuk warga.</span>
+            <span class="text-xs text-gray-500 mt-2">&copy; {{ date('Y') }} Majada. {{ config('app.version') }}</span>
         </div>
     </footer>
 </body>

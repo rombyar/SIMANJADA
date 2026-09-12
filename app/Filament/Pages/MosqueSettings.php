@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Filament\Dkm\Pages;
+namespace App\Filament\Pages;
 
-use App\Models\Masjid;
+use App\Enums\UserRole;
+use App\Models\Mosque;
+use App\Models\User;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -12,25 +14,25 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 
-class MasjidSettings extends Page implements HasForms
+class MosqueSettings extends Page implements HasForms
 {
     use InteractsWithForms;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
 
-    protected static ?string $navigationLabel = 'Data Masjid';
+    protected static ?string $navigationLabel = 'Setting Masjid';
 
-    protected static ?string $title = 'Data Masjid';
+    protected static ?string $title = 'Setting Data Masjid';
 
-    protected static string $view = 'filament.dkm.pages.masjid-settings';
+    protected static string $view = 'filament.pages.mosque-settings';
 
     public ?array $data = [];
 
-    public Masjid $record;
+    public Mosque $record;
 
     public function mount(): void
     {
-        $this->record = Masjid::firstOrNew(['user_id' => auth()->id()]);
+        $this->record = Mosque::first() ?? new Mosque();
 
         $this->form->fill($this->record->toArray());
     }
@@ -39,14 +41,14 @@ class MasjidSettings extends Page implements HasForms
     {
         return $form
             ->schema([
-                TextInput::make('nama')->required(),
-                TextInput::make('tahun_berdiri')->required(),
-                Textarea::make('alamat')->required(),
-                TextInput::make('jenis')->required(),
-                TextInput::make('status_tanah')->required(),
-                Textarea::make('deskripsi')->required(),
-                TextInput::make('nomor_telepon'),
-                FileUpload::make('image')->image()->directory('masjids'),
+                TextInput::make('name')->required(),
+                TextInput::make('founding_year')->required(),
+                Textarea::make('address')->required(),
+                TextInput::make('type')->required(),
+                TextInput::make('land_status')->required(),
+                Textarea::make('description')->required(),
+                TextInput::make('phone_number'),
+                FileUpload::make('image')->image()->directory('mosques'),
             ])
             ->statePath('data')
             ->model($this->record);
@@ -55,7 +57,7 @@ class MasjidSettings extends Page implements HasForms
     public function save(): void
     {
         $this->record->fill($this->form->getState());
-        $this->record->user_id = auth()->id();
+        $this->record->user_id ??= User::where('role', UserRole::Dkm)->value('id');
         $this->record->save();
 
         Notification::make()

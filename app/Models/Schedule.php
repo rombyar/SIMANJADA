@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['masjid_id', 'nama', 'deskripsi', 'tempat', 'tanggal', 'waktu'])]
-class Jadwal extends Model
+#[Fillable(['mosque_id', 'name', 'description', 'place', 'date', 'time'])]
+class Schedule extends Model
 {
     protected function casts(): array
     {
         return [
-            'tanggal' => 'date',
+            'date' => 'date',
         ];
     }
 
-    public function masjid(): BelongsTo
+    public function mosque(): BelongsTo
     {
-        return $this->belongsTo(Masjid::class);
+        return $this->belongsTo(Mosque::class);
     }
 }

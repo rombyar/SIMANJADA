@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['user_id', 'nama', 'nomor_telepon', 'alamat'])]
+#[Fillable(['user_id', 'name', 'phone_number', 'address'])]
 class DkmProfile extends Model
 {
     public function user(): BelongsTo

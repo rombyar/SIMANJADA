@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('masjids', function (Blueprint $table) {
+        Schema::create('mosques', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('status', ['pending', 'approved', 'banned'])->default('pending');
-            $table->string('nama');
-            $table->string('tahun_berdiri', 10);
-            $table->text('alamat');
-            $table->string('jenis');
-            $table->string('status_tanah');
-            $table->text('deskripsi');
-            $table->string('nomor_telepon', 20)->nullable();
+            $table->string('name');
+            $table->string('founding_year', 10);
+            $table->text('address');
+            $table->string('type');
+            $table->string('land_status');
+            $table->text('description');
+            $table->string('phone_number', 20)->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('masjids');
+        Schema::dropIfExists('mosques');
     }
 };

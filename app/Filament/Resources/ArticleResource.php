@@ -24,7 +24,7 @@ class ArticleResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('judul')
+            TextInput::make('title')
                 ->required()
                 ->live(onBlur: true)
                 ->afterStateUpdated(function (string $operation, $state, callable $set, $get) {
@@ -33,7 +33,7 @@ class ArticleResource extends Resource
                     }
                 }),
             TextInput::make('slug')->required()->unique(ignoreRecord: true),
-            RichEditor::make('konten')->required()->columnSpanFull(),
+            RichEditor::make('content')->required()->columnSpanFull(),
             FileUpload::make('image')->image()->directory('articles'),
             DateTimePicker::make('published_at')
                 ->helperText('Kosongkan untuk simpan sebagai draft.'),
@@ -44,7 +44,7 @@ class ArticleResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('judul')->searchable(),
+                TextColumn::make('title')->searchable(),
                 IconColumn::make('published_at')->boolean()->getStateUsing(fn (Article $record) => filled($record->published_at))->label('Published'),
                 TextColumn::make('published_at')->dateTime(),
             ]);

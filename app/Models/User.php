@@ -39,9 +39,9 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasOne(DkmProfile::class);
     }
 
-    public function masjids(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function mosques(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Masjid::class);
+        return $this->hasMany(Mosque::class);
     }
 
     public function canAccessPanel(Panel $panel): bool

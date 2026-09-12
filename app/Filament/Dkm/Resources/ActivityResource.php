@@ -2,8 +2,8 @@
 
 namespace App\Filament\Dkm\Resources;
 
-use App\Filament\Dkm\Resources\KegiatanResource\Pages;
-use App\Models\Kegiatan;
+use App\Filament\Dkm\Resources\ActivityResource\Pages;
+use App\Models\Activity;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -15,32 +15,34 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 
-class KegiatanResource extends Resource
+class ActivityResource extends Resource
 {
-    protected static ?string $model = Kegiatan::class;
+    protected static ?string $model = Activity::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
+
+    protected static ?string $navigationGroup = 'Jadwal & Kegiatan';
 
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->whereHas('masjid', fn (Builder $query) => $query->where('user_id', auth()->id()));
+            ->whereHas('mosque', fn (Builder $query) => $query->where('user_id', auth()->id()));
     }
 
     public static function form(Form $form): Form
     {
         return $form->schema([
-            Select::make('masjid_id')
+            Select::make('mosque_id')
                 ->relationship(
-                    name: 'masjid',
-                    titleAttribute: 'nama',
+                    name: 'mosque',
+                    titleAttribute: 'name',
                     modifyQueryUsing: fn (Builder $query) => $query->where('user_id', auth()->id()),
                 )
                 ->required(),
-            TextInput::make('judul')->required(),
-            Textarea::make('deskripsi')->required(),
-            DatePicker::make('tanggal')->required(),
-            FileUpload::make('image')->image()->directory('kegiatans'),
+            TextInput::make('title')->required(),
+            Textarea::make('description')->required(),
+            DatePicker::make('date')->required(),
+            FileUpload::make('image')->image()->directory('activities'),
         ]);
     }
 
@@ -48,18 +50,18 @@ class KegiatanResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('judul')->searchable(),
-                TextColumn::make('masjid.nama'),
-                TextColumn::make('tanggal')->date(),
+                TextColumn::make('title')->searchable(),
+                TextColumn::make('mosque.name'),
+                TextColumn::make('date')->date(),
             ]);
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListKegiatans::route('/'),
-            'create' => Pages\CreateKegiatan::route('/create'),
-            'edit' => Pages\EditKegiatan::route('/{record}/edit'),
+            'index' => Pages\ListActivities::route('/'),
+            'create' => Pages\CreateActivity::route('/create'),
+            'edit' => Pages\EditActivity::route('/{record}/edit'),
         ];
     }
 }

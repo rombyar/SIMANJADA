@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Blog - SIMANJADA')
+@section('title', 'Blog - Majada')
 
 @section('content')
     <h1 class="text-xl font-extrabold text-gray-900 mb-5">Blog</h1>
@@ -12,7 +12,7 @@
                     <x-lucide-calendar class="w-3.5 h-3.5" />
                     {{ $article->published_at->translatedFormat('d F Y') }}
                 </div>
-                <div class="font-bold text-gray-900">{{ $article->judul }}</div>
+                <div class="font-bold text-gray-900">{{ $article->title }}</div>
             </a>
         @empty
             <p class="text-gray-500 text-sm">Belum ada artikel.</p>

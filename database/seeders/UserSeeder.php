@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         ]);
 
         $dkmAccounts = [
-            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@simanjada.test', 'nama' => 'DKM Masjid Al-Ikhlas', 'telepon' => '081234567801', 'alamat' => 'Jl. Merdeka No. 12, Bandung'],
+            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@simanjada.test', 'profileName' => 'DKM Masjid Al-Ikhlas', 'phone' => '081234567801', 'address' => 'Jl. Merdeka No. 12, Bandung'],
         ];
 
         foreach ($dkmAccounts as $dkm) {
@@ -34,9 +34,9 @@ class UserSeeder extends Seeder
 
             DkmProfile::create([
                 'user_id' => $user->id,
-                'nama' => $dkm['nama'],
-                'nomor_telepon' => $dkm['telepon'],
-                'alamat' => $dkm['alamat'],
+                'name' => $dkm['profileName'],
+                'phone_number' => $dkm['phone'],
+                'address' => $dkm['address'],
             ]);
         }
     }

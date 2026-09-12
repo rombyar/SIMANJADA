@@ -6,6 +6,48 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Changed
+- Rebranded public UI (title, nav, footer, meta) from "SIMANJADA" to
+  "Majada" to match the already-rebranded README, keeping "SIMANJADA" as
+  the spelled-out tagline. Added `config('app.version')` (`v2.0.0-free`,
+  Majada being the second generation of this app per the README), shown
+  in the public footer, and switched the git tag scheme to
+  `vMAJOR.MINOR.PATCH-free` per CLAUDE.md's versioning rules.
+
+### Fixed
+- Removed an em dash from the public footer tagline (CLAUDE.md's "no em dash
+  in UI text" rule).
+- Renamed the entire database schema, model classes, Filament resources/
+  pages, and Blade view/component files from Indonesian to English to
+  match CLAUDE.md's "Database naming" and "Language" rules: `masjids` →
+  `mosques`, `jadwals` → `schedules`, `kegiatans` → `activities`,
+  `keuangans` → `finances`, `pengumumen` (typo'd table, also fixed) →
+  `announcements`, plus their columns (`nama` → `name`, `alamat` →
+  `address`, `tanggal` → `date`, etc.) and Indonesian classes/files
+  (`Masjid`, `Jadwal`, `Kegiatan`, `Keuangan`, `Pengumuman` and their
+  Filament resources/pages) renamed to their English equivalents. UI
+  labels shown to users are unchanged.
+
+### Added
+- Pengumuman (announcements) and Keuangan (financial transparency) features:
+  new `Pengumuman`/`Keuangan` models + migrations, `PengumumanResource` and
+  `KeuanganResource` in the DKM panel (scoped to the DKM's own mosque), and
+  new public homepage sections showing pinned/recent announcements and a
+  saldo summary (total pemasukan/pengeluaran/saldo akhir) with a
+  chronological transaction table.
+- `JadwalResource` in the DKM panel — jadwal records previously had no
+  Filament CRUD despite being shown publicly.
+- DKM panel navigation groups: "Jadwal & Kegiatan" (Jadwal, Kegiatan) and
+  "Transparansi" (Pengumuman, Keuangan).
+
+### Changed
+- Public homepage (`home.blade.php`) refactored from one monolithic file
+  into `resources/views/components/public/*` Blade components (hero,
+  info-strip, jadwal-list, pengumuman-list, kegiatan-grid,
+  keuangan-summary, artikel-grid) for easier maintenance.
+- Copywriting pass on public-facing labels and empty states for warmer,
+  plainer Bahasa Indonesia (e.g. "Belum ada pengumuman saat ini").
+  Public layout nav gained anchor links to the new sections and a meta
+  description tag.
 - Converted the app to single-mosque: dropped `masjids.status`
   (pending/approved/banned) and `masjids.is_primary` — there is now only
   ever one `Masjid` record system-wide, so per-mosque approve/ban and

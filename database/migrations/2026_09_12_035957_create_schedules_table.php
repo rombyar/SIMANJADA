@@ -8,18 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('dkm_profiles', function (Blueprint $table) {
+        Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('mosque_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('phone_number', 20);
-            $table->text('address');
+            $table->text('description');
+            $table->string('place');
+            $table->date('date');
+            $table->time('time');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('dkm_profiles');
+        Schema::dropIfExists('schedules');
     }
 };

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Dkm\Resources\KegiatanResource\Pages;
+namespace App\Filament\Dkm\Resources\ActivityResource\Pages;
 
-use App\Filament\Dkm\Resources\KegiatanResource;
+use App\Filament\Dkm\Resources\ActivityResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditKegiatan extends EditRecord
+class EditActivity extends EditRecord
 {
-    protected static string $resource = KegiatanResource::class;
+    protected static string $resource = ActivityResource::class;
 
     protected function getHeaderActions(): array
     {

@@ -8,19 +8,19 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('articles', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('mosque_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->string('slug')->unique();
-            $table->longText('content');
-            $table->string('image')->nullable();
-            $table->timestamp('published_at')->nullable();
+            $table->text('content');
+            $table->date('date');
+            $table->boolean('is_pinned')->default(false);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('announcements');
     }
 };
