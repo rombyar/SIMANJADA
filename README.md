@@ -16,6 +16,7 @@ Majada berfokus pada profil, jadwal, dan kegiatan satu masjid.
 - [Tentang](#tentang)
 - [Requirement](#requirement)
 - [Instalasi](#instalasi)
+- [Cara Penggunaan](#cara-penggunaan)
 - [Teknologi](#teknologi)
 - [Donasi](#donasi)
 - [Hak Cipta dan Lisensi](#hak-cipta-dan-lisensi)
@@ -65,12 +66,53 @@ tiga peran pengguna:
    php artisan serve
    ```
 
-5. Aplikasi memiliki dua panel login berbasis Filament:
+5. Aplikasi siap diakses. Lihat [Cara Penggunaan](#cara-penggunaan) untuk
+   URL login dan fitur tiap panel.
 
-   | Panel | URL | Untuk |
-   |---|---|---|
-   | Super Admin | `/admin` | Pengelola pusat |
-   | DKM | `/dkm` | Pengurus masjid |
+## Cara Penggunaan
+
+### Halaman publik (tanpa login)
+
+Buka `/` untuk beranda, yang menampilkan ringkasan profil masjid, jadwal
+salat, kegiatan, pengumuman, keuangan, dan artikel terbaru. Setiap bagian
+punya halaman daftar lengkapnya sendiri:
+
+| Halaman | URL |
+|---|---|
+| Jadwal salat | `/schedules` |
+| Kegiatan | `/activities` |
+| Pengumuman | `/announcements` |
+| Ringkasan keuangan | `/finances` |
+| Blog/artikel | `/blog` |
+
+### Login
+
+Panel DKM dan Super Admin masing-masing punya halaman login sendiri:
+
+| Panel | URL Login |
+|---|---|
+| DKM | `/dkm/login` |
+| Super Admin | `/admin/login` |
+
+Akun dibuat lewat seeder (`php artisan migrate:fresh --seed`) atau lewat
+menu manajemen pengguna di panel Super Admin.
+
+### Panel DKM (`/dkm`)
+
+Login sebagai pengurus masjid (role `dkm`) untuk mengelola:
+
+- Profil masjid (nama, alamat, tahun berdiri, deskripsi, lokasi peta).
+- Jadwal salat.
+- Kegiatan masjid.
+- Pengumuman.
+- Data keuangan (pemasukan/pengeluaran).
+
+Perubahan yang disimpan di panel ini langsung tampil di halaman publik.
+
+### Panel Super Admin (`/admin`)
+
+Login sebagai admin pusat (role `super_admin`) untuk mengelola artikel/blog
+dan manajemen pengguna.
 
 ## Teknologi
 
