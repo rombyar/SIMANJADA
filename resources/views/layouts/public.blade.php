@@ -8,22 +8,37 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-50 text-gray-900">
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+    @php
+        $navLinks = [
+            ['route' => 'home', 'pattern' => 'home', 'label' => 'Beranda'],
+            ['route' => 'schedule.index', 'pattern' => 'schedule.*', 'label' => 'Jadwal'],
+            ['route' => 'activity.index', 'pattern' => 'activity.*', 'label' => 'Kegiatan'],
+            ['route' => 'announcement.index', 'pattern' => 'announcement.*', 'label' => 'Pengumuman'],
+            ['route' => 'finance.index', 'pattern' => 'finance.*', 'label' => 'Keuangan'],
+            ['route' => 'blog.index', 'pattern' => 'blog.*', 'label' => 'Blog'],
+        ];
+    @endphp
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-10" x-data="{ open: false }">
         <nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
             <a href="{{ route('home') }}" class="flex items-center gap-2 font-extrabold text-lg tracking-tight text-gray-900 flex-none">
                 <x-lucide-building-2 class="w-6 h-6 text-emerald-700" />
                 Majada
             </a>
-            <div class="flex gap-4 sm:gap-6 text-sm font-semibold text-gray-600 overflow-x-auto">
-                <a href="{{ route('home') }}" class="hover:text-emerald-700 whitespace-nowrap {{ request()->routeIs('home') ? 'text-emerald-700' : '' }}">Beranda</a>
-                @if (request()->routeIs('home'))
-                    <a href="#jadwal" class="hover:text-emerald-700 whitespace-nowrap">Jadwal</a>
-                    <a href="#pengumuman" class="hover:text-emerald-700 whitespace-nowrap">Pengumuman</a>
-                    <a href="#keuangan" class="hover:text-emerald-700 whitespace-nowrap">Keuangan</a>
-                @endif
-                <a href="{{ route('blog.index') }}" class="hover:text-emerald-700 whitespace-nowrap {{ request()->routeIs('blog.*') ? 'text-emerald-700' : '' }}">Blog</a>
+            <div class="hidden sm:flex gap-6 text-sm font-semibold text-gray-600">
+                @foreach ($navLinks as $link)
+                    <a href="{{ route($link['route']) }}" class="hover:text-emerald-700 whitespace-nowrap {{ request()->routeIs($link['pattern']) ? 'text-emerald-700 font-bold' : '' }}">{{ $link['label'] }}</a>
+                @endforeach
             </div>
+            <button type="button" @click="open = !open" class="sm:hidden text-gray-700" aria-label="Buka menu navigasi">
+                <x-lucide-menu x-show="!open" class="w-6 h-6" />
+                <x-lucide-x x-show="open" x-cloak class="w-6 h-6" />
+            </button>
         </nav>
+        <div x-show="open" x-cloak x-transition class="sm:hidden border-t border-gray-200 px-4 py-3 flex flex-col gap-3 text-sm font-semibold text-gray-600">
+            @foreach ($navLinks as $link)
+                <a href="{{ route($link['route']) }}" @click="open = false" class="hover:text-emerald-700 {{ request()->routeIs($link['pattern']) ? 'text-emerald-700 font-bold' : '' }}">{{ $link['label'] }}</a>
+            @endforeach
+        </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-4 py-8">

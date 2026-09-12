@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'user_id', 'name', 'founding_year', 'address', 'type',
-    'land_status', 'description', 'phone_number', 'image',
+    'land_status', 'description', 'phone_number', 'map_url', 'image',
 ])]
 class Mosque extends Model
 {

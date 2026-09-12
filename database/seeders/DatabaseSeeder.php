@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MosqueSeeder::class,
             ActivitySeeder::class,
+            AnnouncementSeeder::class,
+            FinanceSeeder::class,
             ArticleSeeder::class,
         ]);
     }

@@ -13,14 +13,14 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'Ahmad Fauzi',
-            'email' => 'admin@simanjada.test',
+            'email' => 'admin@majada.test',
             'password' => 'password',
             'role' => UserRole::SuperAdmin,
             'email_verified_at' => now(),
         ]);
 
         $dkmAccounts = [
-            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@simanjada.test', 'profileName' => 'DKM Masjid Al-Ikhlas', 'phone' => '081234567801', 'address' => 'Jl. Merdeka No. 12, Bandung'],
+            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@majada.test', 'profileName' => 'DKM Masjid Al-Ikhlas', 'phone' => '081234567801', 'address' => 'Jl. Merdeka No. 12, Bandung'],
         ];
 
         foreach ($dkmAccounts as $dkm) {

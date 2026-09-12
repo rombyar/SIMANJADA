@@ -7,7 +7,11 @@
         </div>
         <div>
             <div class="text-xs text-gray-500 font-semibold">Alamat</div>
-            <div class="text-sm text-gray-900 font-semibold">{{ $mosque->address }}</div>
+            @if ($mosque->map_url)
+                <a href="{{ $mosque->map_url }}" target="_blank" rel="noopener" class="text-sm text-emerald-700 font-semibold hover:underline">{{ $mosque->address }}</a>
+            @else
+                <div class="text-sm text-gray-900 font-semibold">{{ $mosque->address }}</div>
+            @endif
         </div>
     </div>
     <div class="flex items-center gap-3">

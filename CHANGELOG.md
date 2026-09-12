@@ -5,7 +5,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+- Tab-based layout for the "Data Masjid" form on both `/admin` and `/dkm`
+  panels (Informasi Umum, Alamat & Kontak, Deskripsi & Foto), each tab
+  saving independently via its own submit button.
+- Full-listing public pages for each homepage section (`/schedules`,
+  `/activities`, `/announcements`, `/finances`), paginated like the
+  existing `/blog` page, plus a "Lihat semua" link on every homepage
+  section heading (jadwal, pengumuman, keuangan, kegiatan, artikel)
+  linking to its full page.
+- Filament's built-in `->profile()` page (Edit profile: name, email,
+  password) enabled in the user menu dropdown on both `/admin` and `/dkm`
+  panels.
+
+### Removed
+- Redundant `AccountWidget` and `FilamentInfoWidget` dashboard cards from
+  both `/admin` and `/dkm` panels (name/sign-out already in the topbar
+  user menu; Filament version/docs links weren't relevant to end users).
+
+### Fixed
+- Homepage "Pengumuman" section now shows only the single latest (or pinned)
+  announcement instead of 3, matching the section's minimal-preview intent,
+  and dropped its "Muat lebih banyak" button (only ever one item to load
+  more of) in favor of the existing "Lihat semua" link.
+
 ### Changed
+- Public navigation now links to all six public pages (Beranda, Jadwal,
+  Kegiatan, Pengumuman, Keuangan, Blog) instead of homepage-only anchors,
+  highlights the active page, and switches to a hamburger/slide panel
+  (Alpine.js) on mobile instead of a horizontally-scrolling link row.
 - Rebranded public UI (title, nav, footer, meta) from "SIMANJADA" to
   "Majada" to match the already-rebranded README, keeping "SIMANJADA" as
   the spelled-out tagline. Added `config('app.version')` (`v2.0.0-free`,
@@ -28,6 +56,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   labels shown to users are unchanged.
 
 ### Added
+- "Muat lebih banyak" (load more) on every list section of the public
+  home page (schedules, activities, announcements, finances, articles)
+  and the blog index: each starts at 3/9 items and fetches more via
+  Alpine.js + a generic `GET /load-more/{section}` AJAX endpoint, reusing
+  the existing Blade item markup as shared partials instead of a
+  duplicate JS templating layer.
+- Icons and semantic colors on the Super Admin dashboard's stat cards, a
+  custom widget view so all 5 cards render symmetrically in one row on
+  desktop (previously wrapped 3+2), explicit `$sort` on the dashboard
+  widgets for a predictable stats → chart → upcoming-schedules order, and
+  a more compact finance chart height.
+- `UserResource` in the Super Admin panel (`/admin/users`) for managing user
+  accounts and roles (super_admin/dkm) from the UI instead of seeder/tinker
+  only. Includes a self-lockout guard preventing a Super Admin from
+  demoting their own account's role.
 - Pengumuman (announcements) and Keuangan (financial transparency) features:
   new `Pengumuman`/`Keuangan` models + migrations, `PengumumanResource` and
   `KeuanganResource` in the DKM panel (scoped to the DKM's own mosque), and
@@ -97,3 +140,45 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   `.htaccess`, `db_masjid.sql`) — removed ahead of full Laravel feature
   parity, at the user's explicit request; the Laravel app is now the only
   codebase in this repo.
+
+## [2.2.0-free] - 2026-09-12
+
+### Added
+- Dashboard widgets for Admin and DKM panels: stat cards (upcoming
+  schedules, activities this month, active announcements, cash balance,
+  plus published articles for Admin), a 6-month income/expense bar chart,
+  and a table of the 5 nearest upcoming schedules.
+
+## [2.1.0-free] - 2026-09-12
+
+### Added
+- `google_maps_url` field on the mosque profile, editable from Mosque
+  Settings; the public address now links to it when set.
+
+### Changed
+- Rebuilt Mosque Settings (Admin & DKM panels): extracted the duplicated
+  form schema into a shared trait, replaced the free-text `type`/
+  `land_status` fields with `Select` dropdowns backed by new
+  `MosqueType`/`LandStatus` enums, added numeric validation to
+  `founding_year`, phone format validation, and a 2MB upload limit on the
+  mosque image.
+- The mosque's uploaded image is now rendered on the public hero section
+  (previously uploaded but never displayed).
+
+## [2.0.2-free] - 2026-09-12
+
+### Changed
+- Reordered public homepage sections to lead with transparency-critical info
+  (Pengumuman, Jadwal, Keuangan) ahead of the Kegiatan gallery and Artikel
+  blog, and fixed the hero CTA label ("Lihat Jadwal Sholat" incorrectly
+  implied prayer times; the section is a general activity schedule).
+  Capped the schedule list to the 5 nearest upcoming entries, matching the
+  existing limits on activities/announcements/finances.
+
+## [2.0.1-free] - 2026-09-12
+
+### Changed
+- Aligned `CLAUDE.md` and `PRD.md` with the actual single-mosque app: removed
+  stale references to Super Admin approve/ban workflows and DKM
+  self-registration, and updated role/entity descriptions to match the
+  current models (Schedule, Activity, Finance, Announcement, Article).

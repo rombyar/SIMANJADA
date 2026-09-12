@@ -1,20 +1,34 @@
-@props(['articles'])
+@props(['articles', 'hasMore' => false])
 
 <section>
-    <h2 class="text-xl font-extrabold text-gray-900 mb-1">Artikel Terbaru</h2>
+    <div class="flex items-center justify-between gap-3 mb-1">
+        <h2 class="text-xl font-extrabold text-gray-900">Artikel Terbaru</h2>
+        <a href="{{ route('blog.index') }}" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex-none">Lihat semua</a>
+    </div>
     <p class="text-sm text-gray-500 mb-4">Tulisan dan kajian seputar masjid dan kegiatan keagamaan.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        @forelse ($articles as $article)
-            <a href="{{ route('blog.show', $article) }}" class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 flex flex-col gap-2 hover:shadow-md transition-shadow">
-                <div class="flex items-center gap-1.5 text-xs text-gray-500 font-semibold">
-                    <x-lucide-calendar class="w-3.5 h-3.5" />
-                    {{ $article->published_at->translatedFormat('d F Y') }}
-                </div>
-                <div class="font-bold text-gray-900">{{ $article->title }}</div>
-                <div class="text-sm text-gray-600">{{ Str::limit(strip_tags($article->content), 90) }}</div>
-            </a>
-        @empty
-            <p class="text-gray-500 text-sm">Belum ada artikel yang dipublikasikan.</p>
-        @endforelse
+    <div x-data="{ offset: 3, hasMore: {{ $hasMore ? 'true' : 'false' }}, loading: false }">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5" x-ref="list">
+            @forelse ($articles as $article)
+                <x-public.partials.article-items :articles="[$article]" />
+            @empty
+                <p class="text-gray-500 text-sm">Belum ada artikel yang dipublikasikan.</p>
+            @endforelse
+        </div>
+        <button
+            type="button"
+            x-show="hasMore"
+            x-cloak
+            :disabled="loading"
+            @click="
+                loading = true;
+                fetch('{{ route('load-more', 'articles') }}?offset=' + offset)
+                    .then(r => { hasMore = r.headers.get('X-Has-More') === '1'; return r.text(); })
+                    .then(html => { $refs.list.insertAdjacentHTML('beforeend', html); offset += 3; loading = false; })
+            "
+            class="mt-4 mx-auto flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800 disabled:opacity-50"
+        >
+            <span x-text="loading ? 'Memuat...' : 'Muat lebih banyak'"></span>
+            <x-lucide-chevron-down class="w-4 h-4" />
+        </button>
     </div>
 </section>

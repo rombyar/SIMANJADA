@@ -1,26 +1,34 @@
-@props(['activities'])
+@props(['activities', 'hasMore' => false])
 
 <section id="kegiatan" class="mb-10 scroll-mt-20">
-    <h2 class="text-xl font-extrabold text-gray-900 mb-1">Kegiatan Terbaru</h2>
+    <div class="flex items-center justify-between gap-3 mb-1">
+        <h2 class="text-xl font-extrabold text-gray-900">Kegiatan Terbaru</h2>
+        <a href="{{ route('activity.index') }}" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex-none">Lihat semua</a>
+    </div>
     <p class="text-sm text-gray-500 mb-4">Aktivitas dan acara terbaru yang diadakan masjid.</p>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        @forelse ($activities as $activity)
-            <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                @if ($activity->image)
-                    <img src="{{ asset('storage/' . $activity->image) }}" alt="{{ $activity->title }}" class="h-36 w-full object-cover">
-                @else
-                    <div class="h-36 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
-                        <x-lucide-heart-handshake class="w-9 h-9 text-emerald-700" />
-                    </div>
-                @endif
-                <div class="p-4 flex flex-col gap-1.5">
-                    <div class="text-xs font-bold text-emerald-700">{{ $activity->date->translatedFormat('d F Y') }}</div>
-                    <div class="font-bold text-gray-900">{{ $activity->title }}</div>
-                    <div class="text-sm text-gray-600">{{ Str::limit($activity->description, 90) }}</div>
-                </div>
-            </div>
-        @empty
-            <p class="text-gray-500 text-sm">Belum ada kegiatan yang dibagikan. Silakan cek lagi nanti.</p>
-        @endforelse
+    <div x-data="{ offset: 3, hasMore: {{ $hasMore ? 'true' : 'false' }}, loading: false }">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5" x-ref="list">
+            @forelse ($activities as $activity)
+                <x-public.partials.activity-items :activities="[$activity]" />
+            @empty
+                <p class="text-gray-500 text-sm">Belum ada kegiatan yang dibagikan. Silakan cek lagi nanti.</p>
+            @endforelse
+        </div>
+        <button
+            type="button"
+            x-show="hasMore"
+            x-cloak
+            :disabled="loading"
+            @click="
+                loading = true;
+                fetch('{{ route('load-more', 'activities') }}?offset=' + offset)
+                    .then(r => { hasMore = r.headers.get('X-Has-More') === '1'; return r.text(); })
+                    .then(html => { $refs.list.insertAdjacentHTML('beforeend', html); offset += 3; loading = false; })
+            "
+            class="mt-4 mx-auto flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800 disabled:opacity-50"
+        >
+            <span x-text="loading ? 'Memuat...' : 'Muat lebih banyak'"></span>
+            <x-lucide-chevron-down class="w-4 h-4" />
+        </button>
     </div>
 </section>

@@ -1,16 +1,16 @@
 @extends('layouts.public')
 
-@section('title', 'Blog - Majada')
+@section('title', 'Jadwal - Majada')
 
 @section('content')
-    <h1 class="text-xl font-extrabold text-gray-900 mb-5">Blog</h1>
+    <h1 class="text-xl font-extrabold text-gray-900 mb-5">Jadwal</h1>
 
-    <div x-data="{ page: 1, hasMore: {{ $articles->hasMorePages() ? 'true' : 'false' }}, loading: false }">
+    <div x-data="{ page: 1, hasMore: {{ $schedules->hasMorePages() ? 'true' : 'false' }}, loading: false }">
         <div class="flex flex-col gap-3" x-ref="list">
-            @forelse ($articles as $article)
-                <x-public.partials.blog-list-items :articles="[$article]" />
+            @forelse ($schedules as $schedule)
+                <x-public.partials.schedule-items :schedules="[$schedule]" />
             @empty
-                <p class="text-gray-500 text-sm">Belum ada artikel.</p>
+                <p class="text-gray-500 text-sm">Belum ada jadwal yang dibagikan.</p>
             @endforelse
         </div>
         <button
@@ -20,7 +20,7 @@
             :disabled="loading"
             @click="
                 loading = true;
-                fetch('{{ route('blog.index') }}?page=' + (page + 1), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+                fetch('{{ route('schedule.index') }}?page=' + (page + 1), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
                     .then(r => { hasMore = r.headers.get('X-Has-More') === '1'; return r.text(); })
                     .then(html => { $refs.list.insertAdjacentHTML('beforeend', html); page += 1; loading = false; })
             "

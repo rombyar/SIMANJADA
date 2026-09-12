@@ -11,7 +11,7 @@ class MosqueSeeder extends Seeder
 {
     public function run(): void
     {
-        $dkmId = User::where('email', 'budi.santoso@simanjada.test')->firstOrFail()->id;
+        $dkmId = User::where('email', 'budi.santoso@majada.test')->firstOrFail()->id;
 
         $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum vestibulum enim id sem vulputate, non mattis leo molestie. Suspendisse luctus, enim sed maximus blandit, orci lacus accumsan diam, blandit dignissim risus purus at elit. Aenean a posuere eros.';
         $sedUt = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.';
@@ -25,6 +25,7 @@ class MosqueSeeder extends Seeder
             'land_status' => 'Wakaf',
             'description' => $lorem,
             'phone_number' => '098997886',
+            'map_url' => 'https://www.openstreetmap.org/?mlat=-6.9147&mlon=107.6098#map=18/-6.9147/107.6098',
         ]);
 
         $schedules = [

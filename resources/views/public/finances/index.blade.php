@@ -1,11 +1,9 @@
-@props(['finances', 'totalMasuk', 'totalKeluar', 'hasMore' => false])
+@extends('layouts.public')
 
-<section id="keuangan" class="mb-10 scroll-mt-20">
-    <div class="flex items-center justify-between gap-3 mb-1">
-        <h2 class="text-xl font-extrabold text-gray-900">Keuangan Masjid</h2>
-        <a href="{{ route('finance.index') }}" class="text-sm font-semibold text-emerald-700 hover:text-emerald-800 flex-none">Lihat semua</a>
-    </div>
-    <p class="text-sm text-gray-500 mb-4">Laporan diperbarui oleh pengurus masjid secara berkala, terbuka untuk warga.</p>
+@section('title', 'Keuangan - Majada')
+
+@section('content')
+    <h1 class="text-xl font-extrabold text-gray-900 mb-5">Keuangan Masjid</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
@@ -25,7 +23,7 @@
     @if ($finances->isEmpty())
         <p class="text-gray-500 text-sm">Belum ada catatan transaksi keuangan.</p>
     @else
-        <div x-data="{ offset: 3, hasMore: {{ $hasMore ? 'true' : 'false' }}, loading: false }">
+        <div x-data="{ page: 1, hasMore: {{ $finances->hasMorePages() ? 'true' : 'false' }}, loading: false }">
             <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
@@ -48,9 +46,9 @@
                 :disabled="loading"
                 @click="
                     loading = true;
-                    fetch('{{ route('load-more', 'finances') }}?offset=' + offset)
+                    fetch('{{ route('finance.index') }}?page=' + (page + 1), { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
                         .then(r => { hasMore = r.headers.get('X-Has-More') === '1'; return r.text(); })
-                        .then(html => { $refs.list.insertAdjacentHTML('beforeend', html); offset += 3; loading = false; })
+                        .then(html => { $refs.list.insertAdjacentHTML('beforeend', html); page += 1; loading = false; })
                 "
                 class="mt-4 mx-auto flex items-center gap-1.5 text-sm font-semibold text-emerald-700 hover:text-emerald-800 disabled:opacity-50"
             >
@@ -59,4 +57,4 @@
             </button>
         </div>
     @endif
-</section>
+@endsection
