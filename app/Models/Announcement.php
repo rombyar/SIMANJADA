@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['mosque_id', 'title', 'content', 'date', 'is_pinned'])]
 class Announcement extends Model
 {
+    protected $table = 'mjd_announcements';
+
     protected function casts(): array
     {
         return [

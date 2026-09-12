@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 ])]
 class Mosque extends Model
 {
+    protected $table = 'mjd_mosques';
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

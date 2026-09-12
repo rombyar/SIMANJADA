@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['user_id', 'name', 'phone_number', 'address'])]
 class DkmProfile extends Model
 {
+    protected $table = 'mjd_dkm_profiles';
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

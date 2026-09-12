@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['mosque_id', 'name', 'description', 'place', 'date', 'time'])]
 class Schedule extends Model
 {
+    protected $table = 'mjd_schedules';
+
     protected function casts(): array
     {
         return [

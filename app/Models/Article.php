@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 #[Fillable(['title', 'slug', 'content', 'image', 'published_at'])]
 class Article extends Model
 {
+    protected $table = 'mjd_articles';
+
     protected function casts(): array
     {
         return [

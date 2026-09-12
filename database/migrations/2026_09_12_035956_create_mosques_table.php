@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('mosques', function (Blueprint $table) {
+        Schema::create('mjd_mosques', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->enum('status', ['pending', 'approved', 'banned'])->default('pending');
@@ -26,6 +26,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('mosques');
+        Schema::dropIfExists('mjd_mosques');
     }
 };

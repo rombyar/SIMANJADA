@@ -8,14 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('mosques', function (Blueprint $table) {
+        Schema::table('mjd_mosques', function (Blueprint $table) {
             $table->string('map_url')->nullable()->after('phone_number');
         });
     }
 
     public function down(): void
     {
-        Schema::table('mosques', function (Blueprint $table) {
+        Schema::table('mjd_mosques', function (Blueprint $table) {
             $table->dropColumn('map_url');
         });
     }

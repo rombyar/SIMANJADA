@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['mosque_id', 'date', 'type', 'amount', 'notes'])]
 class Finance extends Model
 {
+    protected $table = 'mjd_finances';
+
     protected function casts(): array
     {
         return [

@@ -71,6 +71,8 @@ tiga peran pengguna:
 
 ## Cara Penggunaan
 
+![Beranda publik Majada](docs/screenshots/public-homepage.png)
+
 ### Halaman publik (tanpa login)
 
 Buka `/` untuk beranda, yang menampilkan ringkasan profil masjid, jadwal
@@ -98,6 +100,8 @@ Akun dibuat lewat seeder (`php artisan migrate:fresh --seed`) atau lewat
 menu manajemen pengguna di panel Super Admin.
 
 ### Panel DKM (`/dkm`)
+
+![Dashboard panel DKM](docs/screenshots/dkm-dashboard.png)
 
 Login sebagai pengurus masjid (role `dkm`) untuk mengelola:
 

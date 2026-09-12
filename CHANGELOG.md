@@ -5,6 +5,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Fixed
+- Renamed all app tables (`dkm_profiles`, `mosques`, `schedules`,
+  `activities`, `articles`, `announcements`, `finances`) to use the
+  `mjd_` prefix per CLAUDE.md's database naming convention.
+
 ### Added
 - Filter by transaction type (Pemasukan/Pengeluaran) and date range on the
   public Keuangan page (`/finances`), with the summary totals and
