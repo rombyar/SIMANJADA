@@ -14,8 +14,6 @@
         <x-public.info-strip :mosque="$mosque" />
         <x-public.announcement-list :announcements="$mosque->announcements" />
         <x-public.schedule-list :schedules="$mosque->schedules" :has-more="$schedulesHasMore" />
-        <x-public.finance-summary :finances="$mosque->finances" :total-masuk="$totalMasuk" :total-keluar="$totalKeluar" :has-more="$financesHasMore" />
-        <x-public.activity-grid :activities="$mosque->activities" :has-more="$activitiesHasMore" />
     @endif
 
     <x-public.article-grid :articles="$articles" :has-more="$articlesHasMore" />

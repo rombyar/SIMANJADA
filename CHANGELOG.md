@@ -6,6 +6,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Added
+- Filter by transaction type (Pemasukan/Pengeluaran) and date range on the
+  public Keuangan page (`/finances`), with the summary totals and
+  "Muat lebih banyak" pagination recalculated/carried through per the
+  active filter.
+
+### Fixed
+- "Sudah Lewat" badge on past-dated schedule items in the public Jadwal
+  list and homepage section.
+
+### Added
 - Tab-based layout for the "Data Masjid" form on both `/admin` and `/dkm`
   panels (Informasi Umum, Alamat & Kontak, Deskripsi & Foto), each tab
   saving independently via its own submit button.

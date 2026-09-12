@@ -6,7 +6,12 @@
             <x-lucide-calendar-days class="w-5 h-5 text-emerald-700" />
         </div>
         <div class="flex-1">
-            <p class="font-bold text-gray-900">{{ $schedule->name }}</p>
+            <div class="flex items-center gap-2 flex-wrap">
+                <p class="font-bold text-gray-900">{{ $schedule->name }}</p>
+                @if ($schedule->date->isPast())
+                    <span class="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">Sudah Lewat</span>
+                @endif
+            </div>
             <p class="text-sm text-gray-500">
                 {{ $schedule->date->translatedFormat('d F Y') }} &middot; {{ $schedule->time }} &middot; {{ $schedule->place }}
             </p>

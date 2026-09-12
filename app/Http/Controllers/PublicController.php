@@ -20,14 +20,8 @@ class PublicController extends Controller
 
         $mosque?->load([
             'schedules' => fn ($query) => $query->orderBy('date')->take(3),
-            'activities' => fn ($query) => $query->latest('date')->take(3),
             'announcements' => fn ($query) => $query->orderByDesc('is_pinned')->latest('date')->take(1),
-            'finances' => fn ($query) => $query->latest('date')->take(3),
         ]);
-
-        $financeTotals = $mosque
-            ? $mosque->finances()->selectRaw('type, sum(amount) as total')->groupBy('type')->pluck('total', 'type')
-            : collect();
 
         $articles = Article::whereNotNull('published_at')
             ->where('published_at', '<=', now())
@@ -38,11 +32,7 @@ class PublicController extends Controller
         return view('public.home', [
             'mosque' => $mosque,
             'articles' => $articles,
-            'totalMasuk' => (float) ($financeTotals['masuk'] ?? 0),
-            'totalKeluar' => (float) ($financeTotals['keluar'] ?? 0),
             'schedulesHasMore' => $mosque && $mosque->schedules()->orderBy('date')->skip(3)->limit(1)->exists(),
-            'activitiesHasMore' => $mosque && $mosque->activities()->latest('date')->skip(3)->limit(1)->exists(),
-            'financesHasMore' => $mosque && $mosque->finances()->latest('date')->skip(3)->limit(1)->exists(),
             'articlesHasMore' => Article::whereNotNull('published_at')->where('published_at', '<=', now())->skip(3)->limit(1)->exists(),
         ]);
     }
@@ -163,18 +153,32 @@ class PublicController extends Controller
     public function financeIndex(Request $request): View|Response
     {
         $mosque = Mosque::first();
-        $finances = $mosque
-            ? $mosque->finances()->latest('date')->paginate(9)
-            : Finance::where('id', 0)->paginate(9);
+        $type = $request->query('type');
+        $from = $request->query('from');
+        $to = $request->query('to');
+        if ($from && $to && $to < $from) {
+            $to = null;
+        }
+
+        $query = $mosque ? $mosque->finances() : Finance::where('id', 0);
+        $query
+            ->when($type, fn ($q) => $q->where('type', $type))
+            ->when($from, fn ($q) => $q->whereDate('date', '>=', $from))
+            ->when($to, fn ($q) => $q->whereDate('date', '<=', $to));
+
+        $finances = $query->latest('date')->paginate(9)->withQueryString();
 
         if ($request->ajax()) {
             return response(view('components.public.partials.finance-rows', ['finances' => $finances])->render())
                 ->header('X-Has-More', $finances->hasMorePages() ? '1' : '0');
         }
 
-        $financeTotals = $mosque
-            ? $mosque->finances()->selectRaw('type, sum(amount) as total')->groupBy('type')->pluck('total', 'type')
-            : collect();
+        $totalsQuery = $mosque ? $mosque->finances() : Finance::where('id', 0);
+        $financeTotals = $totalsQuery
+            ->when($type, fn ($q) => $q->where('type', $type))
+            ->when($from, fn ($q) => $q->whereDate('date', '>=', $from))
+            ->when($to, fn ($q) => $q->whereDate('date', '<=', $to))
+            ->selectRaw('type, sum(amount) as total')->groupBy('type')->pluck('total', 'type');
 
         return view('public.finances.index', [
             'finances' => $finances,
