@@ -33,12 +33,13 @@ tiga peran pengguna:
 
 ## Requirement
 
-| Kebutuhan | Versi |
-|---|---|
-| PHP | ^8.3 |
-| Composer | Terbaru |
-| Node.js dan npm | Terbaru (LTS) |
-| MySQL | 5.7+ / 8.0+ |
+| Kebutuhan | Versi saat dibuat | Minimum |
+|---|---|---|
+| PHP | 8.3.29 | ^8.3 |
+| Composer | 2.9.3 | ^2.x |
+| Node.js | v24.13.0 | ^20 LTS |
+| npm | 11.6.2 | ^10.x |
+| MySQL | 8.0.30 | 5.7+ / 8.0+ |
 
 ## Instalasi
 
