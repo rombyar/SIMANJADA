@@ -32,8 +32,6 @@ class PublicController extends Controller
         return view('public.home', [
             'mosque' => $mosque,
             'articles' => $articles,
-            'schedulesHasMore' => $mosque && $mosque->schedules()->orderBy('date')->skip(3)->limit(1)->exists(),
-            'articlesHasMore' => Article::whereNotNull('published_at')->where('published_at', '<=', now())->skip(3)->limit(1)->exists(),
         ]);
     }
 
@@ -81,7 +79,7 @@ class PublicController extends Controller
         $articles = Article::whereNotNull('published_at')
             ->where('published_at', '<=', now())
             ->latest('published_at')
-            ->paginate(9);
+            ->paginate(5);
 
         if ($request->ajax()) {
             return response(view('components.public.partials.blog-list-items', ['articles' => $articles])->render())
@@ -109,8 +107,8 @@ class PublicController extends Controller
     {
         $mosque = Mosque::first();
         $schedules = $mosque
-            ? $mosque->schedules()->orderBy('date')->paginate(9)
-            : Schedule::where('id', 0)->paginate(9);
+            ? $mosque->schedules()->orderBy('date')->paginate(5)
+            : Schedule::where('id', 0)->paginate(5);
 
         if ($request->ajax()) {
             return response(view('components.public.partials.schedule-items', ['schedules' => $schedules])->render())
@@ -124,8 +122,8 @@ class PublicController extends Controller
     {
         $mosque = Mosque::first();
         $activities = $mosque
-            ? $mosque->activities()->latest('date')->paginate(9)
-            : Activity::where('id', 0)->paginate(9);
+            ? $mosque->activities()->latest('date')->paginate(5)
+            : Activity::where('id', 0)->paginate(5);
 
         if ($request->ajax()) {
             return response(view('components.public.partials.activity-items', ['activities' => $activities])->render())
@@ -139,8 +137,8 @@ class PublicController extends Controller
     {
         $mosque = Mosque::first();
         $announcements = $mosque
-            ? $mosque->announcements()->orderByDesc('is_pinned')->latest('date')->paginate(9)
-            : Announcement::where('id', 0)->paginate(9);
+            ? $mosque->announcements()->orderByDesc('is_pinned')->latest('date')->paginate(5)
+            : Announcement::where('id', 0)->paginate(5);
 
         if ($request->ajax()) {
             return response(view('components.public.partials.announcement-items', ['announcements' => $announcements])->render())
@@ -166,7 +164,7 @@ class PublicController extends Controller
             ->when($from, fn ($q) => $q->whereDate('date', '>=', $from))
             ->when($to, fn ($q) => $q->whereDate('date', '<=', $to));
 
-        $finances = $query->latest('date')->paginate(9)->withQueryString();
+        $finances = $query->latest('date')->paginate(5)->withQueryString();
 
         if ($request->ajax()) {
             return response(view('components.public.partials.finance-rows', ['finances' => $finances])->render())

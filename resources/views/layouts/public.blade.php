@@ -7,7 +7,7 @@
     <meta name="description" content="@yield('description', 'Jadwal sholat, kegiatan, pengumuman, dan laporan keuangan masjid secara terbuka untuk warga.')">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
     @php
         $navLinks = [
             ['route' => 'home', 'pattern' => 'home', 'label' => 'Beranda'],
@@ -41,7 +41,7 @@
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-8">
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
         @yield('content')
     </main>
 

@@ -13,8 +13,8 @@
         <x-public.hero :mosque="$mosque" />
         <x-public.info-strip :mosque="$mosque" />
         <x-public.announcement-list :announcements="$mosque->announcements" />
-        <x-public.schedule-list :schedules="$mosque->schedules" :has-more="$schedulesHasMore" />
+        <x-public.schedule-list :schedules="$mosque->schedules" />
     @endif
 
-    <x-public.article-grid :articles="$articles" :has-more="$articlesHasMore" />
+    <x-public.article-grid :articles="$articles" />
 @endsection
