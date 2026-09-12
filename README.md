@@ -123,7 +123,7 @@ accounts.
 - Blade for public pages
 - Filament for the Super Admin and DKM panels
 - Laravel Breeze for authentication
-- Alpine.js outside Filament (Filament bundles its own)
+- Alpine.js outside Filament
 - Lucide Icons on public pages
 
 ## Support
